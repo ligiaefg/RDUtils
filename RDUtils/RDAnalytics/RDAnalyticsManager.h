@@ -1,5 +1,5 @@
 //
-//  RDAnaliticsManager.h
+//  RDAnalyticsManager.h
 //  RDUtils
 //
 //  Created by iMac on 20/04/15.
@@ -7,14 +7,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RDAnaliticsManager : NSObject
+@interface RDAnalyticsManager : NSObject
 
 /**
  *  Inits the Analitics Manager
  *
  *  @return Manager Instance
  */
-+ (RDAnaliticsManager *)sharedManager;
++ (RDAnalyticsManager *)sharedManager;
 
 /**
  *  Starts traking

@@ -5,23 +5,23 @@
 //  Created by iMac on 20/04/15.
 //
 
-#import "RDAnaliticsManager.h"
+#import "RDAnalyticsManager.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import <FlurrySDK/Flurry.h>
 
 
-@interface RDAnaliticsManager ()
+@interface RDAnalyticsManager ()
 @property (nonatomic, copy) void (^eventBlock)(NSString*category, NSString*action, NSString*label);
 @end
 
-@implementation RDAnaliticsManager
+@implementation RDAnalyticsManager
 
-+ (RDAnaliticsManager *)sharedManager
++ (RDAnalyticsManager *)sharedManager
 {
     static dispatch_once_t onceToken;
-    static RDAnaliticsManager *sharedInstance;
+    static RDAnalyticsManager *sharedInstance;
     
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
