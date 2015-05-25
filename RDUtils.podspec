@@ -32,17 +32,17 @@ Pod::Spec.new do |s|
   s.subspec 'WMAdManager' do |spec|
    spec.source_files   = "RDUtils/WMAdManager/WMCore/*.{h,m}"
 
-    spec.subspec 'WMAdManager/WMAdColony' do |sub|
+    spec.subspec 'WMAdColony' do |sub|
     sub.source_files   = "RDUtils/WMAdManager/WMNetworks/WMAdColony.{h,m}"
     sub.dependency 'AdColony'
     end
 
-    spec.subspec 'WMAdManager/WMAdMob' do |sub|
+    spec.subspec 'WMAdMob' do |sub|
     sub.source_files   = "RDUtils/WMAdManager/WMNetworks/WMAdMob.{h,m}"
     sub.dependency 'Google-Mobile-Ads-SDK'
     end
 
-    spec.subspec 'WMAdManager/WMChartboost' do |sub|
+    spec.subspec 'WMChartboost' do |sub|
     sub.source_files   = "RDUtils/WMAdManager/WMNetworks/WMChartboost.{h,m}"
     sub.dependency 'ChartboostSDK'
     end
