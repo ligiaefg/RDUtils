@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RDUtils"
-  s.version      = "0.1.6"
+  s.version      = "0.1.7"
   s.summary      = "Group of iOS Utils used on most of the projects."
 
   s.homepage     = "https://github.com/robertodias180/RDUtils"
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/robertodias180/RDUtils.git", :tag => "0.1.6" }
+  s.source       = { :git => "https://github.com/robertodias180/RDUtils.git", :tag => "0.1.7" }
 
 
   s.frameworks = 'UIKit', 'Foundation', 'CoreGraphics', 'AVFoundation'
