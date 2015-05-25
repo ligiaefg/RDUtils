@@ -1,9 +1,9 @@
 //
 //  NSArray+Shuffle.m
-//  NameThatPic
+//  RDUtils
 //
-//  Created by ...dIeGo... on 8/8/14.
-//  Copyright (c) 2014 b7dev. All rights reserved.
+//  Created by Rob on 12/07/13.
+//  Copyright (c) 2013 Rob. All rights reserved.
 //
 
 #import "NSArray+Shuffle.h"

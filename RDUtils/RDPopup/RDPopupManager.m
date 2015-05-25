@@ -1,13 +1,12 @@
 //
 //  RDPopupManager.m
-//  Quem Quer Dinheiro
+//  RDUtils
 //
-//  Created by iMac on 07/05/15.
-//  Copyright (c) 2015 WalkMe Mobile Solutions. All rights reserved.
+//  Created by Rob on 12/07/13.
+//  Copyright (c) 2013 Rob. All rights reserved.
 //
 
 #import "RDPopupManager.h"
-#import "AppDelegate.h"
 
 @implementation RDPopupManager
 + (void)presentPopUp:(RDPopupViewController*)vc WithAnimation:(RDPopupAnimations)aniamation andDelegate:(id<RDPopupManagerDelegate>)delegate{
@@ -26,7 +25,7 @@
 
 + (void)presentFadePopUp:(RDPopupViewController*)vc andDelegate:(id<RDPopupManagerDelegate>)delegate{
     
-    UIViewController *rootVC = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) visibleViewController:[[[UIApplication sharedApplication] delegate].window rootViewController]];
+    UIViewController *rootVC = [self visibleViewController:[[[UIApplication sharedApplication] delegate].window rootViewController]];
     
     if ([rootVC isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navVC = (UINavigationController*)rootVC;
@@ -77,6 +76,33 @@
         }
     }];
 
+}
+
+
+- (UIViewController *)visibleViewController:(UIViewController *)rootViewController
+{
+    if (rootViewController.presentedViewController == nil)
+    {
+        return rootViewController;
+    }
+    if ([rootViewController.presentedViewController isKindOfClass:[UINavigationController class]])
+    {
+        UINavigationController *navigationController = (UINavigationController *)rootViewController.presentedViewController;
+        UIViewController *lastViewController = [[navigationController viewControllers] lastObject];
+        
+        return [self visibleViewController:lastViewController];
+    }
+    if ([rootViewController.presentedViewController isKindOfClass:[UITabBarController class]])
+    {
+        UITabBarController *tabBarController = (UITabBarController *)rootViewController.presentedViewController;
+        UIViewController *selectedViewController = tabBarController.selectedViewController;
+        
+        return [self visibleViewController:selectedViewController];
+    }
+    
+    UIViewController *presentedViewController = (UIViewController *)rootViewController.presentedViewController;
+    
+    return [self visibleViewController:presentedViewController];
 }
 @end
 

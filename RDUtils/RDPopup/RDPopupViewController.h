@@ -1,9 +1,9 @@
 //
 //  RDPopupViewController.h
-//  Quem Quer Dinheiro
+//  RDUtils
 //
-//  Created by iMac on 07/05/15.
-//  Copyright (c) 2015 WalkMe Mobile Solutions. All rights reserved.
+//  Created by Rob on 12/07/13.
+//  Copyright (c) 2013 Rob. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
