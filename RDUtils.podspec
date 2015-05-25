@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RDUtils"
-  s.version      = "0.1.3"
+  s.version      = "0.1.6"
   s.summary      = "Group of iOS Utils used on most of the projects."
 
   s.homepage     = "https://github.com/robertodias180/RDUtils"
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/robertodias180/RDUtils.git", :tag => "0.1.3" }
+  s.source       = { :git => "https://github.com/robertodias180/RDUtils.git", :tag => "0.1.6" }
 
 
   s.frameworks = 'UIKit', 'Foundation', 'CoreGraphics', 'AVFoundation'
@@ -30,22 +30,20 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'WMAdManager' do |spec|
-   spec.source_files   = "RDUtils/WMAdManager/WMCore/*.{h,m}"
+
+    spec.subspec 'Core' do |sub|
+    sub.source_files   = "RDUtils/WMAdManager/WMCore/*.{h,m}"
+    sub.dependency 'RDUtils/RDReachability'
+    sub.dependency 'RDUtils/RDAnalytics'
+    end
+
 
     spec.subspec 'WMAdColony' do |sub|
     sub.source_files   = "RDUtils/WMAdManager/WMNetworks/WMAdColony.{h,m}"
     sub.dependency 'AdColony'
+    sub.dependency 'RDUtils/WMAdManager/Core'
     end
 
-    spec.subspec 'WMAdMob' do |sub|
-    sub.source_files   = "RDUtils/WMAdManager/WMNetworks/WMAdMob.{h,m}"
-    sub.dependency 'Google-Mobile-Ads-SDK'
-    end
-
-    spec.subspec 'WMChartboost' do |sub|
-    sub.source_files   = "RDUtils/WMAdManager/WMNetworks/WMChartboost.{h,m}"
-    sub.dependency 'ChartboostSDK'
-    end
   end
 
 end
