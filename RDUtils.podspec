@@ -37,7 +37,6 @@ Pod::Spec.new do |s|
     sub.dependency 'RDUtils/RDAnalytics'
     end
 
-
     spec.subspec 'WMAdColony' do |sub|
     sub.source_files   = "RDUtils/WMAdManager/WMNetworks/WMAdColony.{h,m}"
     sub.dependency 'AdColony'
@@ -45,5 +44,15 @@ Pod::Spec.new do |s|
     end
 
   end
+
+  s.subspec 'RDPopup' do |spec|
+    spec.source_files   = "RDUtils/RDPopup/*.{h,m}"
+  end
+
+
+  s.subspec 'RDNSArray' do |spec|
+    spec.source_files   = "RDUtils/RDNSArray/*.{h,m}"
+  end
+  
 
 end
