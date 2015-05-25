@@ -11,21 +11,21 @@
 @implementation RDPopupManager
 + (void)presentPopUp:(RDPopupViewController*)vc WithAnimation:(RDPopupAnimations)aniamation andDelegate:(id<RDPopupManagerDelegate>)delegate{
     dispatch_async(dispatch_get_main_queue(), ^{
-    switch (aniamation) {
-        case RDPopupAnimationFade:
-            [RDPopupManager presentFadePopUp:vc andDelegate:delegate];
-            break;
-            
-        default:
-            break;
-    }
+        switch (aniamation) {
+            case RDPopupAnimationFade:
+                [RDPopupManager presentFadePopUp:vc andDelegate:delegate];
+                break;
+                
+            default:
+                break;
+        }
     });
     
 }
 
 + (void)presentFadePopUp:(RDPopupViewController*)vc andDelegate:(id<RDPopupManagerDelegate>)delegate{
     
-    UIViewController *rootVC = [self visibleViewController:[[[UIApplication sharedApplication] delegate].window rootViewController]];
+    UIViewController *rootVC = [RDPopupManager visibleViewController:[[[UIApplication sharedApplication] delegate].window rootViewController]];
     
     if ([rootVC isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navVC = (UINavigationController*)rootVC;
@@ -36,36 +36,36 @@
     [rootVC.view addSubview:vc.view];
     vc.view.translatesAutoresizingMaskIntoConstraints = NO;
     [rootVC.view addConstraint:[NSLayoutConstraint constraintWithItem:vc.view
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:rootVC.view
-                                                                 attribute:NSLayoutAttributeTop
-                                                                multiplier:1
-                                                                  constant:0]];
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:rootVC.view
+                                                            attribute:NSLayoutAttributeTop
+                                                           multiplier:1
+                                                             constant:0]];
     
     [rootVC.view addConstraint:[NSLayoutConstraint constraintWithItem:vc.view
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:rootVC.view
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                multiplier:1
-                                                                  constant:0]];
+                                                            attribute:NSLayoutAttributeBottom
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:rootVC.view
+                                                            attribute:NSLayoutAttributeBottom
+                                                           multiplier:1
+                                                             constant:0]];
     
     [rootVC.view addConstraint:[NSLayoutConstraint constraintWithItem:vc.view
-                                                                 attribute:NSLayoutAttributeLeading
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:rootVC.view
-                                                                 attribute:NSLayoutAttributeLeading
-                                                                multiplier:1
-                                                                  constant:0]];
+                                                            attribute:NSLayoutAttributeLeading
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:rootVC.view
+                                                            attribute:NSLayoutAttributeLeading
+                                                           multiplier:1
+                                                             constant:0]];
     
     [rootVC.view addConstraint:[NSLayoutConstraint constraintWithItem:vc.view
-                                                                 attribute:NSLayoutAttributeTrailing
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:rootVC.view
-                                                                 attribute:NSLayoutAttributeTrailing
-                                                                multiplier:1
-                                                                  constant:0]];
+                                                            attribute:NSLayoutAttributeTrailing
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:rootVC.view
+                                                            attribute:NSLayoutAttributeTrailing
+                                                           multiplier:1
+                                                             constant:0]];
     vc.view.alpha = 0;
     vc.delegate = delegate;
     [UIView animateWithDuration:.6f animations:^{
@@ -75,11 +75,11 @@
             [delegate popUpDidAppear];
         }
     }];
-
+    
 }
 
 
-- (UIViewController *)visibleViewController:(UIViewController *)rootViewController
++ (UIViewController *)visibleViewController:(UIViewController *)rootViewController
 {
     if (rootViewController.presentedViewController == nil)
     {
@@ -90,19 +90,19 @@
         UINavigationController *navigationController = (UINavigationController *)rootViewController.presentedViewController;
         UIViewController *lastViewController = [[navigationController viewControllers] lastObject];
         
-        return [self visibleViewController:lastViewController];
+        return [RDPopupManager visibleViewController:lastViewController];
     }
     if ([rootViewController.presentedViewController isKindOfClass:[UITabBarController class]])
     {
         UITabBarController *tabBarController = (UITabBarController *)rootViewController.presentedViewController;
         UIViewController *selectedViewController = tabBarController.selectedViewController;
         
-        return [self visibleViewController:selectedViewController];
+        return [RDPopupManager visibleViewController:selectedViewController];
     }
     
     UIViewController *presentedViewController = (UIViewController *)rootViewController.presentedViewController;
     
-    return [self visibleViewController:presentedViewController];
+    return [RDPopupManager visibleViewController:presentedViewController];
 }
 @end
 
