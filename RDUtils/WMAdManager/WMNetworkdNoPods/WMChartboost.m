@@ -45,9 +45,9 @@
     
     @try
     {
+        self.hideDelegate = delegate;
         [Chartboost showInterstitial:[self getCBLocationForWMLocation:zone]];
         [super event:WMAdsAnaliticsShow andDescription:nil];
-        self.hideDelegate = delegate;
         return YES;
     }
     @catch(NSException *exception){

@@ -43,9 +43,10 @@
     {
         @try
         {
+            self.hideDelegate = delegate;
             [interstitial presentFromRootViewController:vc];
             [super event:WMAdsAnaliticsShow andDescription:nil];
-            self.hideDelegate = delegate;
+            
             return YES;
         }
         @catch(NSException *exception){
