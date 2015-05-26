@@ -141,4 +141,10 @@
 }
 
 
+-(void)interstitialWillPresentScreen:(GADInterstitial *)ad{
+    if (self.hideDelegate) {
+        [self.hideDelegate adDidShow];
+    }
+}
+
 @end
