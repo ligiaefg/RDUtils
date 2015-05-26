@@ -38,6 +38,13 @@
  *  Send a event with category and action
  *
  *  @param category Event category
+ */
+- (void)sendEvent:(NSString*)category;
+
+/**
+ *  Send a event with category and action
+ *
+ *  @param category Event category
  *  @param action   Event action
  */
 - (void)sendEvent:(NSString*)category Action:(NSString*)action;
@@ -50,7 +57,5 @@
  *  @param label    Event description
  */
 - (void)sendEvent:(NSString*)category Action:(NSString*)action Label:(NSString*)label;
-
-
 
 @end
